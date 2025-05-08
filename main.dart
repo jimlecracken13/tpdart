@@ -2,10 +2,11 @@ import 'dart:math';
 import 'models/bot.dart';
 import 'dart:io';
 import 'models/player.dart';
+import 'package:interact/interact.dart';
 
 void main() {
-  Bot bot = Bot(1, 100);
-  Player player = Player("", 1, 100);
+  Bot bot = Bot();
+  Player player = Player();
   int des = 0;
   print("Veillez saisir votre pseudo");
   String? pseudo = stdin.readLineSync();
@@ -15,16 +16,39 @@ void main() {
   }
   //counter de tour
   int tour = 1;
+  int selection = 0;
   while (player.sante > 0 && bot.sante > 0) {
-    print("--------------joueur joue------------------");
-    print("Tapez sur entrée pour lancer les dés");
-    stdin.readLineSync();
-    des = lanceDeDes();
-    des = des * player.force;
+    print("-------------------joueur joue--------------------");
+    selection = player.afficheSelection();
+    //la valeur du dés en fonction de la selection
+    print("ceci est la valeur de $selection");
+    switch (selection) {
+      case 0:
+        des = 6;
+        break;
+      case 1:
+        des = 12;
+        //on divise la force par deux
+        if (player.sante > 1) {
+          player.sante = player.sante ~/ 2;
+        }
+        break;
+      case 2:
+        //je dois verifier si la santé du player n'a pas dépasser 100
+        if (player.sante < 100) {
+          player.sante = player.sante + 10;
+        }
+        if (player.sante == 100) {
+          player.sante = player.sante;
+        }
+        break;
+      default:
+        des = lanceDeDes();
+    }
     player.attaqueBot(bot, des);
     print("${player.pseudo} asssène un coup de $des à bot");
     bot.infoBot();
-    print("--------------bot joue------------------");
+    print("--------------------bot joue------------------");
     des = lanceDeDes();
     des = des * bot.force;
     bot.attaquePlayer(player, des);

@@ -2,10 +2,28 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "characters",
+      "rootUri": "file:///C:/Users/kalandew8/AppData/Local/Pub/Cache/hosted/pub.dev/characters-1.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "clock",
+      "rootUri": "file:///C:/Users/kalandew8/AppData/Local/Pub/Cache/hosted/pub.dev/clock-1.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
       "name": "collection",
       "rootUri": "file:///C:/Users/kalandew8/AppData/Local/Pub/Cache/hosted/pub.dev/collection-1.19.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
+    },
+    {
+      "name": "dart_console",
+      "rootUri": "file:///C:/Users/kalandew8/AppData/Local/Pub/Cache/hosted/pub.dev/dart_console-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "emoji_extension",
@@ -14,13 +32,55 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "ffi",
+      "rootUri": "file:///C:/Users/kalandew8/AppData/Local/Pub/Cache/hosted/pub.dev/ffi-2.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "interact",
+      "rootUri": "file:///C:/Users/kalandew8/AppData/Local/Pub/Cache/hosted/pub.dev/interact-2.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "intl",
+      "rootUri": "file:///C:/Users/kalandew8/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.18.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "meta",
+      "rootUri": "file:///C:/Users/kalandew8/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.16.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "path",
+      "rootUri": "file:///C:/Users/kalandew8/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.9.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "tint",
+      "rootUri": "file:///C:/Users/kalandew8/AppData/Local/Pub/Cache/hosted/pub.dev/tint-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "win32",
+      "rootUri": "file:///C:/Users/kalandew8/AppData/Local/Pub/Cache/hosted/pub.dev/win32-5.12.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
       "name": "tpdart",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2025-05-08T08:49:13.779216Z",
+  "generated": "2025-05-08T10:34:11.764592Z",
   "generator": "pub",
   "generatorVersion": "3.7.3",
   "pubCache": "file:///C:/Users/kalandew8/AppData/Local/Pub/Cache"
