@@ -8,18 +8,12 @@ class Player {
   //constructor
   Player(this.pseudo, this.force, this.sante);
   //attaque du bot vers le player
-  attaqueBot(Bot bot, int des) {
-    bot.sante = bot.sante - (des * this.force);
-  }
-
+  attaqueBot(Bot bot, int des) => bot.sante-=(des * this.force);
   //affiche info du player
   infoPlayer() {
     //je check si la sante est sup à 0
-    if (this.sante > 0) {
-      print("Point de vie de ${this.pseudo} ${this.sante}");
-    } else {
-      print("Point de vie de ${this.pseudo} 0");
-    }
+    this.sante>0 ? print("Point de vie de ${this.pseudo} ${this.sante}"):
+    print("Point de vie de ${this.pseudo} 0");
   }
 
   afficheVictoire() {
