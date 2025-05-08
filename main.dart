@@ -2,7 +2,6 @@ import 'dart:math';
 import 'models/bot.dart';
 import 'dart:io';
 import 'models/player.dart';
-import 'package:interact/interact.dart';
 
 void main() {
   Bot bot = Bot();
