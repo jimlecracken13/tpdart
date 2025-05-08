@@ -18,7 +18,7 @@ void main() {
   while (player.sante > 0 && bot.sante > 0) {
     print("--------------joueur joue------------------");
     print("Tapez sur entrée pour lancer les dés");
-    String? entree = stdin.readLineSync();
+    stdin.readLineSync();
     des = lanceDeDes();
     des = des * player.force;
     player.attaqueBot(bot, des);
@@ -32,10 +32,13 @@ void main() {
     player.infoPlayer();
     print("Tour $tour");
     tour++;
-    //je check si la sante de bot est 0;
-    if (bot.sante == 0) {
-      player.afficheVictoire();
-    }
+  }
+  //je check si la sante de bot est 0;
+  if (bot.sante <= 0) {
+    player.afficheVictoire();
+  }
+  if (player.sante <= 0) {
+    player.afficherDefaite();
   }
 }
 

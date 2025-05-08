@@ -1,4 +1,5 @@
 import 'bot.dart';
+import 'package:emoji_extension/emoji_extension.dart';
 
 class Player {
   String pseudo;
@@ -16,16 +17,16 @@ class Player {
     //je check si la sante est sup à 0
     if (this.sante > 0) {
       print("Point de vie de ${this.pseudo} ${this.sante}");
-    } else {
-      print("Bot a gagné");
     }
   }
 
   afficheVictoire() {
-    print("Victoire!!");
+    final hasFace = Emoji('😃').hasFace;
+    print("Victoire!! $hasFace");
   }
 
   afficherDefaite() {
-    print("Défaite");
+    final geneFace = Emoji('😅').hasFace;
+    print("Défaite $geneFace");
   }
 }

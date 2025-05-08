@@ -1,0 +1,27 @@
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "collection",
+      "rootUri": "file:///C:/Users/kalandew8/AppData/Local/Pub/Cache/hosted/pub.dev/collection-1.19.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "emoji_extension",
+      "rootUri": "file:///C:/Users/kalandew8/AppData/Local/Pub/Cache/hosted/pub.dev/emoji_extension-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "tpdart",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    }
+  ],
+  "generated": "2025-05-08T08:49:13.779216Z",
+  "generator": "pub",
+  "generatorVersion": "3.7.3",
+  "pubCache": "file:///C:/Users/kalandew8/AppData/Local/Pub/Cache"
+}
