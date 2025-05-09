@@ -11,12 +11,12 @@ void main() {
   String? pseudo = stdin.readLineSync();
   //on s'assure que le pseudo n'est pas null
   if (pseudo != null) {
-    player.pseudo = pseudo;
+    player.setPseudo = pseudo;
   }
   //counter de tour
   int tour = 1;
   int selection = 0;
-  while (player.sante > 0 && bot.sante > 0) {
+  while (player.getSante > 0 && bot.getSante > 0) {
     print("-------------------joueur joue--------------------");
     selection = player.afficheSelection();
     //la valeur du dés en fonction de la selection
@@ -28,39 +28,38 @@ void main() {
       case 1:
         des = 12;
         //on divise la force par deux
-        if (player.sante > 1) {
-          player.sante = player.sante ~/ 2;
+        if (player.getSante > 1) {
+          player.setSante = player.getSante ~/ 2;
         }
         break;
       case 2:
         //je dois verifier si la santé du player n'a pas dépasser 100
-        if (player.sante < 100) {
-          player.sante = player.sante + 10;
-        }
-        if (player.sante == 100) {
-          player.sante = player.sante;
+        if (player.getSante < 100) {
+          player.setSante = player.getSante + 10;
         }
         break;
       default:
         des = lanceDeDes();
     }
     player.attaqueBot(bot, des);
-    print("${player.pseudo} asssène un coup de $des à bot");
+    print("${player.getPseudo} asssène un coup de $des à bot");
     bot.infoBot();
     print("--------------------bot joue------------------");
     des = lanceDeDes();
-    des = des * bot.force;
+    int force_bot = bot.getForce;
+    des *= force_bot;
     bot.attaquePlayer(player, des);
-    print("Bot assène un coup de $des à ${player.pseudo}");
+    print("Bot assène un coup de $des à ${player.getPseudo}");
+    print("Coup du bot $des * ${bot.getForce} donne ${des * bot.getForce}");
     player.infoPlayer();
     print("Tour $tour");
     tour++;
   }
   //je check si la sante de bot est 0;
-  if (bot.sante <= 0) {
+  if (bot.getSante <= 0) {
     player.afficheVictoire();
   }
-  if (player.sante <= 0) {
+  if (player.getSante <= 0) {
     player.afficherDefaite();
   }
 }
