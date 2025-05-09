@@ -9,10 +9,12 @@ void main() {
   int des = 0;
   print("Veillez saisir votre pseudo");
   String? pseudo = stdin.readLineSync();
+
   //on s'assure que le pseudo n'est pas null
   if (pseudo != null) {
     player.setPseudo = pseudo;
   }
+
   //counter de tour
   int tour = 1;
   int selection = 0;
@@ -42,7 +44,6 @@ void main() {
         des = lanceDeDes();
     }
     player.attaqueBot(bot, des);
-    print("${player.getPseudo} asssène un coup de $des à bot");
     bot.infoBot();
     print("--------------------bot joue------------------");
     des = lanceDeDes();
@@ -65,6 +66,6 @@ void main() {
 }
 
 int lanceDeDes() {
-  var sommeDesDeux = Random().nextInt(13);
+  var sommeDesDeux = Random(1).nextInt(13);
   return sommeDesDeux;
 }

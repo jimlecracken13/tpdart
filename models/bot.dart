@@ -22,6 +22,7 @@ class Bot {
         : print("Point de vie du bot 0");
   }
 
-  attaquePlayer(Player player, int des) => player.setSante = player.getSante-(des * _force);
+  attaquePlayer(Player player, int des) => 
+  player.setSante = player.getSante-(des + getForce);
   
 }
