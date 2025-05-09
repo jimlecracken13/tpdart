@@ -10,8 +10,11 @@ class Player {
   String _pseudo;
   int _force;
   int _sante;
+  int index = 0;
   //choisir l'arme
   Weapon weapon = Weapon(puissance: 1, precision: 100);
+  //liste des armes que l'utilisateur peut utiliser
+  List<Weapon> _WeaponListManager = [];
   //constructor
   Player({String pseudo = "", int force = 1, int sante = 100})
       : _pseudo = pseudo,
@@ -25,6 +28,14 @@ class Player {
   set setPseudo(String pseudo) => _pseudo = pseudo;
   set setForce(int force) => _force = force;
   set setSante(int sante) => _sante = sante;
+  // cette fonction retourne le prochain élément de la liste
+  Weapon get getNextWeaponToLoot {
+    return _WeaponListManager[index];
+    index++;
+    //je checke si on est à la fin de la liste
+    index == _WeaponListManager.length;
+  }
+
   //attaque du bot vers le player
   attaqueBot(Bot bot, int des) {
     int chance = Random(1).nextInt(100);
