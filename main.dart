@@ -62,18 +62,20 @@ void main() {
       print("Tour $tour");
       tour++;
     }
-     //je check si la sante de bot est 0;
-  if (bot.getSante <= 0) {
-    player.afficheVictoire();
-  }
-  if (player.getSante <= 0) {
-    player.afficherDefaite();
-  }
+    //je check si la sante de bot est 0;
+    if (bot.getSante <= 0) {
+      player.afficheVictoire();
+    }
+    if (player.getSante <= 0) {
+      player.afficherDefaite();
+    }
     partie = Interact(option, "Nouvelle partie ?⭐​");
   }
 }
 
 int lanceDeDes() {
-  var sommeDesDeux = Random(1).nextInt(13);
+  int de1 = Random().nextInt(6) + 1;
+  int de2 = Random().nextInt(6) + 1;
+  var sommeDesDeux = de1 + de2;
   return sommeDesDeux;
 }

@@ -30,7 +30,15 @@
       "degats": 70,
       "durabilite": 50,
       "attributs": ["mithril", "Cœur de dragon"],
-      "precision": 50
+      "precision": 55
+    },
+    {
+      "nom": "Mithrill",
+      "type": "Mêlée",
+      "degats": 75,
+      "durabilite": 65,
+      "attributs": ["mithril", "Cœur de dragon"],
+      "precision": 60
     }
     
   ]
