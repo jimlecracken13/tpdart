@@ -4,42 +4,33 @@ import 'dart:math';
 import 'bot.dart';
 import 'package:emoji_extension/emoji_extension.dart';
 import '../utils.dart';
+import 'fighter.dart';
 import 'weapon.dart';
 
-class Player {
+class Player extends Fighter {
   String _pseudo;
-  int _force;
-  int _sante;
   int index = 0;
+  List<String> option = ["Oui", "Non"];
 
   // Choisir les armes disponibles
   Weapon weapon1 = Weapon(arme: "Thorfin", puissance: 1, precision: 74);
   Weapon weapon2 = Weapon(arme: "Slayer", puissance: 1, precision: 100);
-
   // arme par defaut
   Weapon weapon = Weapon(arme: "Epée", puissance: 10, precision: 50);
-
   // Liste des armes que l'utilisateur peut utiliser
   late List<Weapon> _WeaponListManager;
 
   // Constructeur
-  Player({String pseudo = "", int force = 1, int sante = 100})
-      : _pseudo = pseudo,
-        _force = force,
-        _sante = sante {
+  Player({String pseudo = ""}) : _pseudo = pseudo {
     //initialiser l'ensemble des armes dans le constructeur
     _WeaponListManager = [weapon1, weapon2];
   }
 
   // Getters
   get getPseudo => _pseudo;
-  get getForce => _force;
-  get getSante => _sante;
 
   // Setters
   set setPseudo(String pseudo) => _pseudo = pseudo;
-  set setForce(int force) => _force = force;
-  set setSante(int sante) => _sante = sante;
 
   // Retourne le prochain élément de la liste
   Weapon? get getNextWeaponToLoot =>
@@ -49,7 +40,6 @@ class Player {
     int chance = Random(1).nextInt(100);
     if (des != 0) {
       String message = "Voulez-vous changez d'arme?";
-      List<String> option = ["Oui", "Non"];
       int selection = Interact(option, message);
       if (selection == 0) {
         weapon = getNextWeaponToLoot ?? weapon;
@@ -65,20 +55,12 @@ class Player {
     }
   }
 
-  // Affiche les informations du joueur
-  infoPlayer() {
-    getSante > 0
-        ? print("Point de vie de $getPseudo : $getSante")
-        : print("Point de vie de $getPseudo : 0");
-  }
-
   // Affiche la victoire et permet de changer d'arme
   afficheVictoire() {
     final hasFace = Emoji('😃').value;
     print("Victoire!! $hasFace");
-    List<String> listOption = ["Oui", "Non"];
     String message = "Ameliorer votre arme?";
-    int selection = Interact(listOption, message);
+    int selection = Interact(option, message);
 
     if (selection == 0) {
       print("Acquisition d'une nouvelle arme 🗡️");
@@ -87,12 +69,14 @@ class Player {
       Weapon newWeapon = Weapon(puissance: 2, precision: 80);
       newWeapon.setArme = nom ?? 'Ifrit';
       print("${weapon.getArme} acquis !");
+      //j'ajoute le nouvelle arme à la liste des armes acquise
+      _WeaponListManager.add(newWeapon);
     }
   }
 
   // Affiche la défaite
   afficherDefaite() {
-    final geneFace = Emoji('😅').value;
+    final geneFace = Emoji('☠️​').value;
     print("Défaite $geneFace");
   }
 
@@ -109,5 +93,9 @@ class Player {
     int selection = Interact(choixAttaque, message);
     print('${choixAttaque[selection]}');
     return selection;
+  }
+
+  infoPlayer() {
+    super.infoFighter();
   }
 }
