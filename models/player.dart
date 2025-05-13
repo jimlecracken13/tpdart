@@ -13,15 +13,14 @@ class Player {
   int index = 0;
 
   // Choisir les armes disponibles
-  Weapon weapon1 = Weapon(arme:"Thorfin",puissance: 1, precision: 74);
-  Weapon weapon2 = Weapon(arme:"Slayer",puissance: 1, precision: 100);
+  Weapon weapon1 = Weapon(arme: "Thorfin", puissance: 1, precision: 74);
+  Weapon weapon2 = Weapon(arme: "Slayer", puissance: 1, precision: 100);
 
   // arme par defaut
   Weapon weapon = Weapon(arme: "Epée", puissance: 10, precision: 50);
 
   // Liste des armes que l'utilisateur peut utiliser
   late List<Weapon> _WeaponListManager;
-
 
   // Constructeur
   Player({String pseudo = "", int force = 1, int sante = 100})
@@ -85,8 +84,9 @@ class Player {
       print("Acquisition d'une nouvelle arme 🗡️");
       print("Donnez un nom à votre arme :");
       String? nom = stdin.readLineSync();
-      weapon?.setArme = nom ?? "ifrit";
-      print("${weapon?.getArme} acquis !");
+      Weapon newWeapon = Weapon(puissance: 2, precision: 80);
+      newWeapon.setArme = nom ?? 'Ifrit';
+      print("${weapon.getArme} acquis !");
     }
   }
 
