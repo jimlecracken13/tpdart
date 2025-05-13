@@ -1,0 +1,38 @@
+{
+  "armes": [
+    {
+      "nom": "Épée",
+      "type": "Mêlée",
+      "degats": 10,
+      "durabilite": 100,
+      "attributs": ["Tranchant", "Acier"],
+      "precision": 15
+    },
+    {
+      "nom": "Arc",
+      "type": "Distance",
+      "degats": 18,
+      "durabilite": 80,
+      "attributs": ["Bois", "Corde"],
+      "precision": 45
+    },
+    {
+      "nom": "Baguette magique",
+      "type": "Magique",
+      "degats": 25,
+      "durabilite": 50,
+      "attributs": ["Bois d'if", "Cœur de dragon"],
+      "precision": 50
+    },
+    {
+      "nom": "Excalibur",
+      "type": "Mêlée",
+      "degats": 70,
+      "durabilite": 50,
+      "attributs": ["mithril", "Cœur de dragon"],
+      "precision": 50
+    }
+    
+  ]
+}
+

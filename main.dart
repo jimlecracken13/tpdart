@@ -39,10 +39,12 @@ void main() {
         if (player.getSante < 100) {
           player.setSante = player.getSante + 10;
         }
+        des = 0;
         break;
       default:
         des = lanceDeDes();
     }
+    print("la valeur des dés $des");
     player.attaqueBot(bot, des);
     bot.infoBot();
     print("--------------------bot joue------------------");
