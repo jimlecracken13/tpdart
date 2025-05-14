@@ -4,9 +4,9 @@ import 'dart:io';
 import 'models/player.dart';
 import 'utils.dart';
 
-void main() {
+void main() async {
   Bot bot = Bot();
-  Player player = Player();
+  Player player = await Player.create();
   int des = 0;
   List<String> option = ["Oui", "Non"];
   print("Veillez saisir votre pseudo");
@@ -57,7 +57,7 @@ void main() {
       des *= force;
       bot.attaquePlayer(player, des);
       print("Bot assène un coup de $des à ${player.getPseudo}");
-      print("Coup du bot ${des * bot.getForce}");
+      print("Coup du bot ${des + bot.getForce}");
       player.infoPlayer();
       print("Tour $tour");
       tour++;
@@ -70,6 +70,12 @@ void main() {
       player.afficherDefaite();
     }
     partie = Interact(option, "Nouvelle partie ?⭐​");
+    if (partie == 0) {
+      player.setSante = 100;
+      bot.setSante = 100;
+    } else {
+      print("Oh no!☹️​");
+    }
   }
 }
 

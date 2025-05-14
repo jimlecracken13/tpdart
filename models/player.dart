@@ -6,24 +6,27 @@ import 'package:emoji_extension/emoji_extension.dart';
 import '../utils.dart';
 import 'fighter.dart';
 import 'weapon.dart';
+import '../services/playerService.dart';
 
 class Player extends Fighter {
   String _pseudo;
   int index = 0;
   List<String> option = ["Oui", "Non"];
+  //default weapon
+  Weapon weapon = Weapon(nom: 'Titeuf', degats: 30, durabilite: 40);
 
-  // Choisir les armes disponibles
-  Weapon weapon1 = Weapon(arme: "Thorfin", puissance: 1, precision: 74);
-  Weapon weapon2 = Weapon(arme: "Slayer", puissance: 1, precision: 100);
-  // arme par defaut
-  Weapon weapon = Weapon(arme: "Epée", puissance: 10, precision: 50);
   // Liste des armes que l'utilisateur peut utiliser
-  late List<Weapon> _WeaponListManager;
+  late List<Weapon>? _WeaponListManager;
 
   // Constructeur
-  Player({String pseudo = ""}) : _pseudo = pseudo {
-    //initialiser l'ensemble des armes dans le constructeur
-    _WeaponListManager = [weapon1, weapon2];
+  Player({String pseudo = "", List<Weapon>? weapon_list})
+      : _pseudo = pseudo,
+        _WeaponListManager = weapon_list;
+
+  // Constructeur factory async
+  static Future<Player> create({String pseudo = ""}) async {
+    List<Weapon> weapons = await Playerservice.getWeapons();
+    return Player(weapon_list: weapons);
   }
 
   // Getters
@@ -34,21 +37,24 @@ class Player extends Fighter {
 
   // Retourne le prochain élément de la liste
   Weapon? get getNextWeaponToLoot =>
-      (index < _WeaponListManager.length) ? _WeaponListManager[index++] : null;
+      (index < _WeaponListManager!.length) ? _WeaponListManager![index++] : null;
   // Attaque du bot par le joueur
   attaqueBot(Bot bot, int des) {
-    int chance = Random(1).nextInt(100);
+    int chance = Random().nextInt(100) + 1;
+    print("la valeur de $chance");
     if (des != 0) {
       String message = "Voulez-vous changez d'arme?";
       int selection = Interact(option, message);
       if (selection == 0) {
         weapon = getNextWeaponToLoot ?? weapon;
+        print("Nom ${weapon.getNom}");
+        print("${weapon.getPrecision}");
       }
       if ((chance < weapon.getPrecision)) {
-        print("Arme : ${weapon.getArme}");
-        bot.setSante = bot.getSante - (des + getForce + weapon.getPuissance);
+        print("Arme : ${weapon.getNom}");
+        bot.setSante = bot.getSante - (des + getForce + weapon.getDegats);
         print(
-            "$getPseudo attaque un bot avec une force de ${des + getForce + weapon.getPuissance}");
+            "$getPseudo attaque un bot avec une force de ${des + getForce + weapon.getDegats}");
       } else {
         print("L'attaque a échoué");
       }
@@ -66,11 +72,11 @@ class Player extends Fighter {
       print("Acquisition d'une nouvelle arme 🗡️");
       print("Donnez un nom à votre arme :");
       String? nom = stdin.readLineSync();
-      Weapon newWeapon = Weapon(puissance: 2, precision: 80);
-      newWeapon.setArme = nom ?? 'Ifrit';
-      print("${weapon.getArme} acquis !");
+      Weapon newWeapon = Weapon(degats: 2, precision: 80);
+      newWeapon.setNom = nom ?? 'Ifrit';
+      print("${weapon.getNom} acquis !");
       //j'ajoute le nouvelle arme à la liste des armes acquise
-      _WeaponListManager.add(newWeapon);
+      _WeaponListManager!.add(newWeapon);
     }
   }
 
